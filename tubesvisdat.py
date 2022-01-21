@@ -51,7 +51,7 @@ plot = figure(title='COVID-19 Statistic for March 2', x_axis_label='Total Cases'
            plot_height=700, plot_width=1000, tools=[HoverTool(tooltips='@location')])
 
 # menambahkan circle glyph untuk figure dari "plot"
-plot.circle(x='x', y='y', source=source, fill_alpha=0.8, size=5, 
+plot.circle(x='x', y='y', source=source, fill_alpha=0.8, size=20, 
            color=dict(field='province', transform=color_mapper), legend='province')
 
 # set legend dan axis atribut
