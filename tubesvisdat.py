@@ -32,13 +32,13 @@ data = data.rename(columns={"Location": "location", "New Cases": "new_cases", "N
                             "New Active Cases": "new_active_cases", "Total Cases": "total_cases", "Total Deaths": "total_deaths", "Total Recovered": "total_recovered", 
                             "Province": "province"})
 
-# Make a list of the unique values from the province column: province_list
+# membuat daftar unique list dari kolom province
 province_list = data.province.unique().tolist()
 
-# Make a color mapper: color_mapper
+# membuat color mapper
 color_mapper = CategoricalColorMapper(factors=province_list, palette=Spectral6)
 
-# Make the ColumnDataSource: source
+# membuat column data source
 source = ColumnDataSource(data={
     'x'          : data.loc[2].total_cases,
     'y'          : data.loc[2].total_deaths,
@@ -46,21 +46,21 @@ source = ColumnDataSource(data={
     'province'   : data.loc[2].province,
 })
 
-# Create the figure: plot
+# membuat figure plot
 plot = figure(title='COVID-19 Statistic for March 2', x_axis_label='Total Cases', y_axis_label='Total Deaths',
            plot_height=700, plot_width=1000, tools=[HoverTool(tooltips='@location')])
 
-# Add a circle glyph to the figure p
+# menambahkan circle glyph untuk figure dari "plot"
 plot.circle(x='x', y='y', source=source, fill_alpha=0.8,
            color=dict(field='province', transform=color_mapper), legend='province')
 
-# Set the legend and axis attributes
+# set legend dan axis atribut
 plot.legend.location = 'bottom_right'
 plot.add_layout(plot.legend[0], 'right')
 
-# Define the callback function: update_plot
+# membuat fungsi callback: update_plot
 def update_plot(attr, old, new):
-    # set the `date` name to `slider.value` and `source.data = new_data`
+    # ubah "date" menjadi "slider.value" dan "source.data" menjadi "new_data"
     date = slider.value
     x = x_select.value
     y = y_select.value
@@ -76,32 +76,32 @@ def update_plot(attr, old, new):
     }
     source.data = new_data
     
-    # Add title to figure: plot.title.text
+    # menambahkan title ke figure: plot.title.text
     plot.title.text = 'COVID-19 Statistic for March %d' % date
 
-# Make a slider object: slider
+# membuat slider object: slider
 slider = Slider(start=1, end=31, step=1, value=1, title='Date')
 slider.on_change('value',update_plot)
 
-# Make dropdown menu for x and y axis
-# Create a dropdown Select widget for the x data: x_select
+# membuat dropdown menu untuk x dan y axis
+# membuat dropdown Select widget untuk x data: x_select
 x_select = Select(
     options=['new_cases', 'new_deaths', 'new_recovered', 'new_active_cases', 'total_cases', 'total_deaths', 'total_recovered'],
     value='total_cases',
     title='x-axis data'
 )
-# Attach the update_plot callback to the 'value' property of x_select
+# melampirkan update_plot callback ke dalam "value" dari x_select
 x_select.on_change('value', update_plot)
 
-# Create a dropdown Select widget for the y data: y_select
+# membuat dropdown Select widget for the y data: y_select
 y_select = Select(
     options=['new_cases', 'new_deaths', 'new_recovered', 'new_active_cases', 'total_cases', 'total_deaths', 'total_recovered'],
     value='total_deaths',
     title='y-axis data'
 )
-# Attach the update_plot callback to the 'value' property of y_select
+# melampirkan update_plot callback ke dalam "value" dari y_select
 y_select.on_change('value', update_plot)
     
-# Create layout and add to current document
+# membuat layout dan menambahkannya ke dokumen saat ini
 layout = row(widgetbox(slider, x_select, y_select), plot)
 curdoc().add_root(layout)
