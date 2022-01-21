@@ -18,7 +18,6 @@ from bokeh.models import Slider, Select
 
 data = pd.read_csv("https://raw.githubusercontent.com/dzikrisinatria/tubes-visdat/main/datacovmar.csv")
 data.set_index('Date', inplace=True)
-data
 
 data = data.drop(labels=['Location ISO Code', 'Total Active Cases', 'Location Level', 'City or Regency',
                   'Country', 'Continent', 'Island', 'Time Zone', 'Special Status', 'Total Regencies', 'Total Cities',
@@ -26,15 +25,12 @@ data = data.drop(labels=['Location ISO Code', 'Total Active Cases', 'Location Le
                   'Population Density', 'Longitude', 'Latitude', 'New Cases per Million', 'Total Cases per Million',
                   'New Deaths per Million', 'Total Deaths per Million', 'Total Deaths per 100rb', 'Case Fatality Rate',
                   'Case Recovered Rate', 'Growth Factor of New Cases', 'Growth Factor of New Deaths'], axis=1)
-data.head()
 
 data = data.dropna()
-data.head()
 
 data = data.rename(columns={"Location": "location", "New Cases": "new_cases", "New Deaths": "new_deaths", "New Recovered": "new_recovered", 
                             "New Active Cases": "new_active_cases", "Total Cases": "total_cases", "Total Deaths": "total_deaths", "Total Recovered": "total_recovered", 
                             "Province": "province"})
-data.head()
 
 # Make a list of the unique values from the province column: province_list
 province_list = data.province.unique().tolist()
@@ -108,5 +104,3 @@ y_select.on_change('value', update_plot)
 # Create layout and add to current document
 layout = row(widgetbox(slider, x_select, y_select), plot)
 curdoc().add_root(layout)
-
-!pip freeze > requirements.txt
