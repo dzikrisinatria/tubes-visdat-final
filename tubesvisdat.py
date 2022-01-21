@@ -56,7 +56,7 @@ plot.circle(x='x', y='y', source=source, fill_alpha=0.8,
 
 # Set the legend and axis attributes
 plot.legend.location = 'bottom_right'
-plot.add_layout(legend, 'right')
+plot.add_layout(plot.legend[0], 'right')
 
 # Define the callback function: update_plot
 def update_plot(attr, old, new):
