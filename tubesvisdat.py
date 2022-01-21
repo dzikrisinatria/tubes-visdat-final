@@ -48,7 +48,7 @@ source = ColumnDataSource(data={
 
 # Create the figure: plot
 plot = figure(title='1970', x_axis_label='Total Cases', y_axis_label='Total Deaths',
-           plot_height=700, plot_width=700, tools=[HoverTool(tooltips='@location')])
+           plot_height=1000, plot_width=700, tools=[HoverTool(tooltips='@location')])
 
 # Add a circle glyph to the figure p
 plot.circle(x='x', y='y', source=source, fill_alpha=0.8,
