@@ -16,7 +16,7 @@ from bokeh.palettes import Spectral6
 from bokeh.layouts import widgetbox, row, gridplot
 from bokeh.models import Slider, Select
 
-data = pd.read_csv("https://raw.githubusercontent.com/dzikrisinatria/tubes-visdat/main/datacovmar.csv")
+data = pd.read_csv("https://raw.githubusercontent.com/dzikrisinatria/tubes-visdat-final/main/datacovmar.csv")
 data.set_index('Date', inplace=True)
 
 data = data.drop(labels=['Location ISO Code', 'Total Active Cases', 'Location Level', 'City or Regency',
@@ -48,7 +48,7 @@ source = ColumnDataSource(data={
 
 # Create the figure: plot
 plot = figure(title='1970', x_axis_label='Total Cases', y_axis_label='Total Deaths',
-           plot_height=400, plot_width=700, tools=[HoverTool(tooltips='@location')])
+           plot_height=1000, plot_width=1000, tools=[HoverTool(tooltips='@location')])
 
 # Add a circle glyph to the figure p
 plot.circle(x='x', y='y', source=source, fill_alpha=0.8,
