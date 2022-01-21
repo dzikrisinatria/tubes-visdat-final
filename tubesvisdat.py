@@ -55,7 +55,7 @@ plot.circle(x='x', y='y', source=source, fill_alpha=0.8,
            color=dict(field='province', transform=color_mapper), legend='province')
 
 # Set the legend and axis attributes
-plot.legend.location = 'lower_right'
+plot.legend.location = 'lower right'
 
 # Define the callback function: update_plot
 def update_plot(attr, old, new):
