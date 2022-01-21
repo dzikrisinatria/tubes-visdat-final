@@ -80,7 +80,7 @@ def update_plot(attr, old, new):
     plot.title.text = 'COVID-19 Statistic for March %d' % date
 
 # membuat slider object: slider
-slider = Slider(start=1, end=31, step=1, value=1, title='Date')
+slider = Slider(start=2, end=31, step=1, value=2, title='Date')
 slider.on_change('value',update_plot)
 
 # membuat dropdown menu untuk x dan y axis
