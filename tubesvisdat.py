@@ -47,8 +47,13 @@ source = ColumnDataSource(data={
 })
 
 # membuat figure plot
+TOOLTIPS = [
+    ("Location", "@location"),
+    ("x", "@x"),
+    ("y", "@y")
+]
 plot = figure(title='COVID-19 Statistic for March 2', x_axis_label='Total Cases', y_axis_label='Total Deaths',
-           plot_height=700, plot_width=1000, tools=[HoverTool(tooltips='@location')])
+           plot_height=700, plot_width=1000, tooltips=TOOLTIPS)
 
 # menambahkan circle glyph untuk figure dari "plot"
 plot.circle(x='x', y='y', source=source, fill_alpha=0.8, size=10, 
