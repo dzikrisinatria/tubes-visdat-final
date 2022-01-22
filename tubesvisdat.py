@@ -7,6 +7,14 @@ Original file is located at
     https://colab.research.google.com/drive/1TO-zYVo5z4j7G2M8jrftSmasmtIeYf_u
 """
 
+# Kelompok 7:
+# Dzikri Al-Kautsar Sinatria A (1301183498)
+# Andika Elang Dirgantara (1301184153)
+# M Rifqi Wiliatama (1301184278)
+
+# Link Demo Heroku:
+# https://tubes-visdat-kel7.herokuapp.com/tubesvisdat
+
 import pandas as pd
 from bokeh.io import curdoc
 from bokeh.plotting import figure
